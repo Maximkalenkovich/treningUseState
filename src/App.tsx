@@ -1,11 +1,22 @@
 import React, {useState} from 'react';
 
+function computerInitialCounter() {
+    console.log('Some calculation...')
+    return Math.trunc(Math.random()*20)
+}
+
+
 
 function App() {
-  const  [counter, setCounter] =    useState(0)
+  const  [counter, setCounter] =    useState(() =>{
+      return computerInitialCounter()
+  })
 
   function increment() {
-      setCounter(counter + 1)
+     setCounter(prevState => {
+         return prevState + 1
+     })
+  // setCounter(prev => prev + 1)
   }
 
   function decrement() {
